@@ -15,3 +15,5 @@ for i in range(0,len(links)):
      print(links[i]+"\n")
 
 #
+     
+print(sel.url)
