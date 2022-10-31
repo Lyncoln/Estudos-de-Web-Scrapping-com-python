@@ -8,15 +8,19 @@ Created on Tue Mar  5 13:53:14 2019
 
 import scrapy
 from scrapy.crawler import CrawlerProcess
+import os
 
-arquivo = open('resultado.txt','w')
+localdetrabalho = "C:/Users/Hp/Documents/DIRETORIO DE TRABALHO DO R/FNDE Simas/"
+os.chdir(localdetrabalho)
+
+arquivo = open('resultado2018.txt','w')
 
 
 class pegaExcel(scrapy.Spider):
     name = 'Excel'
    
     parte1 = 'https://www.fnde.gov.br/distribuicaosimadnet/selecionar?numeroEntidade=000000'
-    parte2 = '&anoPrograma=2015&codigoPrograma=01&ufSelecionada=RJ&criterios='       
+    parte2 = '&anoPrograma=2018&codigoPrograma=01&ufSelecionada=RJ&criterios='       
     comutacoes = []
         
     for i in range(0,1000000):
@@ -40,18 +44,7 @@ class pegaExcel(scrapy.Spider):
         if(pag):
             arquivo.write(str(pag)+'\n')
        
-            
-        
-        
-
-    
-#    def parse(self, response):
-#        try:
-#            excel = response.xpath('//*[@id="pesquisar"]/div[4]/a[1]').extract()
-#                       
-#        except:
-#            pass 
-        
+      
        
 process = CrawlerProcess()
 process.crawl(pegaExcel)
